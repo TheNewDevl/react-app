@@ -1,0 +1,24 @@
+@import './variables';
+
+@mixin maxWidth() {
+  max-width: $max-width;
+  margin: auto;
+}
+
+@mixin flex($align: center, $justify: inherit, $column: false, $wrap: false) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  @if ($column) {
+    flex-direction: column;
+  }
+  @if ($wrap) {
+    flex-wrap: wrap;
+  }
+}
+
+@mixin media($screen-type: 768px) {
+  @media screen and (min-width: map-get($screen-sizes, $screen-type)) {
+    @content;
+  }
+}

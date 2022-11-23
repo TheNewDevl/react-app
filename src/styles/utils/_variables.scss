@@ -1,0 +1,10 @@
+$max-width: 1440px;
+
+$screen-sizes: (
+        mobile: 376px,
+        tablet: 768px,
+        desktop: 992px,
+        big-size: $max-width,
+);
+
+$primary-color: #FF6060;
