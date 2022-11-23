@@ -3,23 +3,38 @@ import s from "./Header.module.scss";
 import { Link } from "react-router-dom";
 import { useEffect, useState, MouseEvent } from "react";
 
+const setAriaSelected = (el: HTMLAnchorElement): void => {
+  const selected = document.querySelector("[aria-selected]");
+  if (selected) selected.removeAttribute("aria-selected");
+  el && el.toggleAttribute("aria-selected");
+};
+
 const Header = () => {
   const [logoSize, setLogoSize] = useState({ width: 145, height: 47 });
+  const paths = { home: "/", about: "/about" };
+  const navLinks = [
+    { name: "Accueil", path: paths.home },
+    { name: "A Propos", path: paths.about },
+  ];
+  const matchMedia = window.matchMedia("(min-width: 768px)");
 
   useEffect(() => {
-    const matchMedia = window.matchMedia("(min-width: 768px)");
     const handleResize = () => {
       matchMedia.matches ? setLogoSize({ width: 211, height: 60 }) : setLogoSize({ width: 145, height: 47 });
     };
     handleResize();
     matchMedia.addEventListener("change", handleResize);
+
+    // Underline the current link depending on the url path
+    const urlPath = window.location.pathname;
+    const link = document.querySelector(`[href='${urlPath}']`);
+    link && setAriaSelected(link as HTMLAnchorElement);
+
     return () => matchMedia.removeEventListener("change", handleResize);
   }, []);
 
-  const handleHighlight = (e: MouseEvent<HTMLAnchorElement>) => {
-    const selected = document.querySelector("[aria-selected]");
-    if (selected) selected.toggleAttribute("aria-selected");
-    e.currentTarget.toggleAttribute("aria-selected");
+  const handleUnderline = (e: MouseEvent<HTMLAnchorElement>) => {
+    setAriaSelected(e.currentTarget);
   };
 
   return (
@@ -28,12 +43,11 @@ const Header = () => {
         <Logo width={logoSize.width} height={logoSize.height} />
       </div>
       <nav role="tablist">
-        <Link role="tab" onClick={handleHighlight} className={s.link} to="/">
-          Accueil
-        </Link>
-        <Link role="tab" onClick={handleHighlight} className={s.link} to="/about">
-          A Propos
-        </Link>
+        {navLinks.map(({ name, path }) => (
+          <Link key={name} to={path} role="tab" className={s.link} onClick={handleUnderline}>
+            {name}
+          </Link>
+        ))}
       </nav>
     </header>
   );
