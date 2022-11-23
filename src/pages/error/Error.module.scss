@@ -1,0 +1,58 @@
+@use "../../styles/utils/mixins";
+@use "../../styles/utils/variables";
+
+.error {
+  @include mixins.maxWidth();
+  //height: calc(100vh - variables.$footer-height);
+  @include mixins.flex(center, center, column);
+  min-height: 70vh;
+  gap: 50px;
+  text-align: center;
+  padding-bottom: 1em;
+
+  &__title {
+    font-weight: 700;
+    font-size: 96px;
+    font-size: clamp(96px, 18.9vw + 1em, 288px);
+    line-height: 137px;
+    line-height: clamp(137px, 10vw + 1em, 411px);
+
+    @include mixins.media(big-size) {
+      font-size: 288px;
+      line-height: 411px;
+    }
+  }
+
+  &__text {
+    font-size: 18px;
+    font-weight: 500;
+    font-size: clamp(18px, 2vw + 0.5em, 36px);
+    line-height: 26px;
+    line-height: clamp(26px, 2.5vw + 0.5em, 51px);
+    padding: 0 20px;
+
+    @include mixins.media(big-size) {
+      font-size: 36px;
+      line-height: 51px;
+    }
+
+    & span {
+      display: block;
+      @include mixins.media(mobile) {
+        display: inline;
+      }
+    }
+  }
+
+  &__link {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-decoration: underline;
+
+    @include mixins.media(tablet) {
+      font-size: 18px;
+      line-height: 26px;
+    }
+  }
+}
