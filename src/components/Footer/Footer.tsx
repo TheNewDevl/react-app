@@ -1,4 +1,4 @@
-import Logo from "../../assets/Logo";
+import Logo from "../Logo/Logo";
 import s from "./Footer.module.scss";
 import { useEffect, useRef } from "react";
 import { FooterRef } from "../../utils/types";

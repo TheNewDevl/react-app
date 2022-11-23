@@ -1,4 +1,4 @@
-import Logo from "../../assets/Logo";
+import Logo from "../Logo/Logo";
 import s from "./Header.module.scss";
 import { Link } from "react-router-dom";
 import { useEffect, useState, MouseEvent } from "react";
