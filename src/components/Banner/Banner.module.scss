@@ -3,7 +3,6 @@
 .banner {
   position: relative;
   @include mixins.flex(center);
-  margin-top: 1em;
   padding: 0 5%;
   height: 111px;
   width: 100%;
