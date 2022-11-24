@@ -1,0 +1,7 @@
+@use '../styles/utils/mixins';
+
+.MainComponent {
+  @include mixins.maxWidth();
+  padding-top: clamp(16px, 3.7%, 63px);
+  padding-bottom: clamp(16px, 3.7%, 63px);
+}
