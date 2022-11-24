@@ -1,0 +1,55 @@
+@use '../../styles/utils/mixins';
+@use '../../styles/utils/variables';
+
+.card {
+  @include mixins.cardWidth(1);
+  min-height: 255px;
+  max-height: 340px;
+  //height: 45vw;
+  position: relative;
+  border-radius: variables.$card-radius;
+  @include mixins.media(tablet) {
+    @include mixins.cardWidth(2);
+    height: 35vw;
+  }
+
+  @include mixins.media(desktop) {
+    @include mixins.cardWidth(3);
+    height: 23.7vw;
+  }
+
+  &__title {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 26px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    color: #fff;
+    z-index: 2;
+  }
+
+  &:after {
+    content: "";
+    inset: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+    border-radius: inherit;
+  }
+
+  & img {
+    border-radius: variables.$card-radius;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.link__mask {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
