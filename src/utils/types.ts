@@ -21,8 +21,12 @@ export type ApartmentType = {
   tags: string[];
 };
 
-export type UseFetchType = {
-  data: ApartmentType[] | ApartmentType | null;
+export type dataType<T extends ApartmentType["id"] | null | undefined> = T extends ApartmentType["id"]
+  ? ApartmentType
+  : ApartmentType[];
+
+export interface GetHookFetchReturnValue<T> {
+  data: T extends string ? ApartmentType | null : ApartmentType[] | null;
   isLoading: boolean;
   error: string | null;
-};
+}
