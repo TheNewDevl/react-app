@@ -1,0 +1,8 @@
+@use '../../styles/utils/mixins';
+
+.accordion__container {
+  @include mixins.flex(center, center, column);
+  margin: clamp(20px, 2.5vw, 30px) auto 0;
+  gap: clamp(20px, 2.5vw, 30px);
+  max-width: 1023px;
+}
