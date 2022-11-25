@@ -1,0 +1,6 @@
+@use "../../styles/utils/mixins";
+
+.ratings__container {
+  display: flex;
+  gap: clamp(10px, 1.5vw, 20px);
+}
