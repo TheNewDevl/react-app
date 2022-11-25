@@ -1,0 +1,53 @@
+@use '../../styles/utils/variables';
+@use '../../styles/utils/mixins';
+
+.accordion {
+  width: 100%;
+  border-radius: 5px;
+
+  &__header {
+    @include mixins.flex(center, space-between);
+    padding: 7px clamp(10px, 2.5vw, 25px) 7px clamp(10px, 2vw, 18px);
+    background: variables.$primary-color;
+    border-radius: inherit;
+    cursor: pointer;
+
+    &_title {
+      color: #fff;
+      font-weight: 500;
+      font-size: clamp(13px, 1.5vw, 18px);
+      line-height: clamp(19px, 2.5vw, 34px);
+    }
+
+    &_control {
+      transition: all 400ms ease-in-out;
+
+      &.rotate {
+        transform: rotate(180deg);
+      }
+
+      & .arrow {
+        width: clamp(16px, 2vw, 24px);
+      }
+    }
+  }
+
+  &__content {
+    transition: all 400ms ease-in-out;
+    background: #F7F7F7;
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+
+    &_text {
+      font-size: clamp(12px, 2vw, 24px);
+      line-height: clamp(17px, 2.5vw, 34px);
+      padding: 20px 20px 10px;
+
+      &_small {
+        font-size: clamp(12px, 2vw, 18px);
+        line-height: clamp(17px, 2.5vw, 26px);
+      }
+    }
+  }
+}
+
