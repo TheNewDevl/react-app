@@ -34,7 +34,7 @@ const About = () => {
       <Banner isFixedHeight imgSrc={aboutBanner} />
       <div className={s.accordion__container}>
         {AccordionList.map((item, i) => (
-          <Accordion opened={i % 2 !== 0} key={i} content={item} />
+          <Accordion opened={i % 2 !== 0} key={i} content={item} id={i} />
         ))}
       </div>
     </MainComponent>
