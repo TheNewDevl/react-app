@@ -38,6 +38,7 @@ const Accordion = ({ content, opened, isApartmentPage, id }: CollapseProps) => {
   return (
     <div ref={accordionRef} className={s.accordion}>
       <div
+        role="button"
         tabIndex={0}
         aria-controls={`accordion-content-${id}`}
         aria-expanded={open ? "true" : "false"}
@@ -53,6 +54,7 @@ const Accordion = ({ content, opened, isApartmentPage, id }: CollapseProps) => {
         </div>
       </div>
       <div
+        role="region"
         aria-hidden={open ? "false" : "true"}
         id={`accordion-content-${id}`}
         aria-labelledby={`accordion-header-${id}`}

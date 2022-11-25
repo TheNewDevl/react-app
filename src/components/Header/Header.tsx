@@ -6,7 +6,7 @@ import { useEffect, useState, MouseEvent } from "react";
 const setAriaSelected = (el: HTMLAnchorElement): void => {
   const selected = document.querySelector("[aria-selected]");
   if (selected) selected.removeAttribute("aria-selected");
-  el && el.toggleAttribute("aria-selected");
+  el && el.setAttribute("aria-selected", "true");
 };
 
 const Header = () => {
