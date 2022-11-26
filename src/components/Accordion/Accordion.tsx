@@ -14,7 +14,7 @@ const Accordion = ({ content, opened, isApartmentPage, id }: CollapseProps) => {
   const [open, setOpen] = useState(!!opened);
   const textContainerRef = useRef<HTMLDivElement>(null);
   const accordionRef = useRef<HTMLDivElement>(null);
-  const textDomRef = useRef<HTMLDivElement>(null);
+  const textDomRef = useRef<HTMLOListElement & HTMLParagraphElement>(null);
   const { text, list, title } = content;
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const Accordion = ({ content, opened, isApartmentPage, id }: CollapseProps) => {
           </p>
         )}
         {list && (
-          <ol className={handleContentClassName(s, open, isApartmentPage)}>
+          <ol ref={textDomRef} className={handleContentClassName(s, open, isApartmentPage)}>
             {list.map((item, i) => (
               <li key={i}>{item}</li>
             ))}
