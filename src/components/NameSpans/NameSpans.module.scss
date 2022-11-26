@@ -1,0 +1,13 @@
+@use '../../styles/utils/mixins';
+
+.name {
+  font-weight: 500;
+  font-size: clamp(12px, 2.5vw, 18px);
+  line-height: clamp(17px, 3.5vw, 26px);
+  text-align: right;
+
+  & span {
+    display: block;
+  }
+}
+
