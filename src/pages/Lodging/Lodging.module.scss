@@ -1,0 +1,62 @@
+@use '../../styles/utils/mixins';
+
+.lodging {
+  &__title {
+    font-size: clamp(18px, 3.5vw, 36px);
+    line-height: clamp(26px, 4.9vw, 51px);
+    font-weight: 500;
+  }
+
+  &__location {
+    font-size: clamp(14px, 2.5vw, 18px);
+    line-height: clamp(20px, 3.5vw, 26px);
+    font-weight: 500;
+  }
+
+  &__host {
+    &__container {
+      @include mixins.flex(center, flex-end);
+      gap: 10px;
+
+      & img {
+        width: clamp(32px, 6vw, 64px);
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.title__wrapper {
+  margin-bottom: clamp(17px, 2.5vw, 25px);
+  @include mixins.flex(unset, unset, column);
+  gap: 10px;
+}
+
+.top__wrapper {
+  margin-top: clamp(15px, 2.5vw, 25px);
+  @include mixins.media(desktop) {
+    @include mixins.flex(unset, space-between);
+  }
+}
+
+
+.host__wrapper {
+  @include mixins.flex(center, space-between);
+  margin-bottom: clamp(15px, 2.5vw, 25px);
+  @include mixins.media(desktop) {
+    @include mixins.flex(flex-end, space-between);
+    flex-direction: column-reverse;
+  }
+}
+
+.accordion__container {
+  @include mixins.flex(flex-start, center, column);
+  margin: clamp(20px, 2.5vw, 30px) auto 0;
+  gap: clamp(20px, 5.5vw, 75px);
+
+  @include mixins.media(desktop) {
+    margin-top: 0;
+    flex-direction: row;
+  }
+}
