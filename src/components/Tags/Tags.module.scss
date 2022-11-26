@@ -8,17 +8,13 @@
 
 .tag {
   @include mixins.flex(center, center);
-  border-radius: clamp(5px, 1.5vw, 10px);
-  min-width: clamp(84px, 1.5vw, 115px);
-  height: clamp(18px, 2.5vw, 25px);
-  padding: 0 clamp(10px, 3vw, 20px);
+  border-radius: mixins.clampCalculator(5px, 10px);
+  min-width: mixins.clampCalculator(84px, 115px);
+  height: mixins.clampCalculator(18px, 25px);
+  padding: 0 mixins.clampCalculator(10px, 20px);
   background: #FF6060;
   font-weight: 500;
-  font-size: clamp(10px, 1.5vw, 14px);
+  font-size: mixins.clampCalculator(10px, 14px);
   color: variables.$footer-color;
-
-  @include mixins.media(tablet) {
-    font-size: 14px;
-  }
 }
 

@@ -3,19 +3,20 @@
 
 .card {
   @include mixins.cardWidth(1);
-  min-height: 255px;
-  max-height: 340px;
+  height: mixins.clampCalculator(255px, 320px);
+  /*  min-height: 255px;
+    max-height: 340px;*/
   //height: 45vw;
   position: relative;
   border-radius: variables.$card-radius;
   @include mixins.media(tablet) {
     @include mixins.cardWidth(2);
-    height: 35vw;
+    // height: 35vw;
   }
 
-  @include mixins.media(desktop) {
+  @include mixins.media(desktop-large) {
     @include mixins.cardWidth(3);
-    height: 23.7vw;
+    // height: 23.7vw;
   }
 
   &__title {

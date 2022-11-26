@@ -4,9 +4,9 @@
   position: relative;
   @include mixins.flex(center);
   padding: 0 5%;
-  height: 111px;
+  height: mixins.clampCalculator(111px, 223px);;
   width: 100%;
-  border-radius: 10px;
+  border-radius: mixins.clampCalculator(10px, 25px);
   z-index: 1;
   background: center / cover no-repeat;
 
@@ -16,8 +16,6 @@
 
   @include mixins.media(tablet) {
     justify-content: center;
-    border-radius: 25px;
-    height: 223px;
   }
 
   & br {
@@ -37,13 +35,9 @@
 
   & h1 {
     color: #fff;
-    font-size: 24px;
-    font-size: clamp(24px, 2vw + 1em, 48px);
+    font-size: mixins.clampCalculator(24px, 48px);
     font-weight: 500;
     line-height: 24px;
     z-index: 100;
-    @include mixins.media(big-size) {
-      font-size: 48px;
-    }
   }
 }

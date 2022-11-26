@@ -17,13 +17,11 @@ footer {
 
   & .copyright {
     color: variables.$footer-color;
-    font-size: 12px;
+    font-size: mixins.clampCalculator(12px, 24px);
     font-weight: 500;
-    line-height: 17px;
+    line-height: mixins.clampCalculator(17px, 34px);
     @include mixins.media(tablet) {
-      font-size: 24px;
       margin-bottom: -1em;
-      line-height: 34px;
     }
   }
 }

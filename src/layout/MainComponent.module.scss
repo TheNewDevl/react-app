@@ -2,6 +2,6 @@
 
 .MainComponent {
   @include mixins.maxWidth();
-  padding-top: clamp(16px, 3.7%, 63px);
-  padding-bottom: clamp(16px, 3.7%, 63px);
+  padding-top: mixins.clampCalculator(16px, 63px);
+  padding-bottom: mixins.clampCalculator(16px, 63px);
 }

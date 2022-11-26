@@ -41,7 +41,7 @@ const Footer = () => {
   return (
     <footer ref={footerDomRef}>
       <div className={s.logo}>
-        <Logo width={122} height={39.5} />
+        <Logo isFixed />
       </div>
       <p className={s.copyright}>© 2020 Kasa. All rights reserved</p>
     </footer>

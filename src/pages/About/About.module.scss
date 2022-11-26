@@ -2,7 +2,7 @@
 
 .accordion__container {
   @include mixins.flex(center, center, column);
-  margin: clamp(20px, 2.5vw, 30px) auto 0;
-  gap: clamp(20px, 2.5vw, 30px);
+  margin: mixins.clampCalculator(20px, 30px) auto 0;
+  gap: mixins.clampCalculator(20px, 30px);
   max-width: 1023px;
 }

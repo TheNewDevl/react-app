@@ -2,5 +2,5 @@
 
 .ratings__container {
   display: flex;
-  gap: clamp(10px, 1.5vw, 20px);
+  gap: mixins.clampCalculator(10px, 20px);
 }

@@ -3,11 +3,12 @@
 
 .cards__container {
   @include mixins.flex(unset, unset, false, true);
-  margin-top: clamp(22px, 3vw, 40px);
+  margin-top: mixins.clampCalculator(22px, 40px);
   column-gap: variables.$cards-gap;
-  row-gap: clamp(20px, 2vw, 37px);
+  row-gap: mixins.clampCalculator(20px, 37px);
+  transition: padding 0.3s ease-in-out;
 
-  @include mixins.media(desktop) {
+  @include mixins.media(desktop-large) {
     background: rgba(246, 246, 246, 1);
     padding: 56px 50px;
     border-radius: 25px;

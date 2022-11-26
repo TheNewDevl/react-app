@@ -1,10 +1,12 @@
+@use '../../styles/utils/mixins';
+
 .slideShow {
   width: 100%;
   min-height: 255px;
   height: 35vw;
   max-height: 415px;
   position: relative;
-  border-radius: clamp(10px, 2vw, 25px);
+  border-radius: mixins.clampCalculator(10px, 25px);
 
   &__img {
     width: 100%;
@@ -32,8 +34,8 @@
     color: transparent;
     position: absolute;
     border: none;
-    background: url('../../assets/img-control.svg') center center / clamp(12px, 5vw ,47px) no-repeat;
-    width: clamp(40px, 10vw, 100px);
+    background: url('../../assets/img-control.svg') center center / mixins.clampCalculator(12px ,47px) no-repeat;
+    width: mixins.clampCalculator(40px, 100px);
     height: 100%;
     top: 0;
     z-index: 2;
