@@ -6,9 +6,11 @@ type CardProps = {
   title: ApartmentType["title"];
   cover: ApartmentType["cover"];
   id: string;
+  onLoaded?: () => void;
 };
 
 const Card = ({
+  onLoaded,
   id,
   title = "title",
   cover = "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg",
@@ -17,7 +19,7 @@ const Card = ({
 
   return (
     <article className={s.card}>
-      <img src={cover} alt={`${title} illustration`} />
+      <img onLoad={onLoaded} src={cover} alt={`${title} illustration`} />
       <Link to={href}>
         <h2 className={s.card__title}>{title}</h2>
         <span aria-hidden="true" className={s.link__mask}></span>

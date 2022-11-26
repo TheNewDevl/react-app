@@ -1,6 +1,7 @@
 import s from "./SlideShow.module.scss";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Loader from "../Loader/Loader";
 
 type SlideShowProps = { imagesList: string[] };
 
@@ -10,13 +11,22 @@ const SlideShow = ({ imagesList }: SlideShowProps) => {
     current: 1,
     total: 0,
   });
+  const imageRef = useRef<HTMLImageElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     setCount({ ...count, total: imagesList.length });
+    if (imageRef.current) imageRef.current.onload = () => setIsLoaded(true);
   }, []);
 
-  const handleNext = () => setCount({ ...count, current: count.current < count.total ? ++count.current : 1 });
-  const handlePrevious = () => setCount({ ...count, current: count.current > 1 ? --count.current : count.total });
+  const handleNext = () => {
+    setCount({ ...count, current: count.current < count.total ? ++count.current : 1 });
+    setIsLoaded(false);
+  };
+  const handlePrevious = () => {
+    setCount({ ...count, current: count.current > 1 ? --count.current : count.total });
+    setIsLoaded(false);
+  };
 
   /** Will display controls only if there is more than one picture*/
   const PicturesControls = () => {
@@ -43,7 +53,14 @@ const SlideShow = ({ imagesList }: SlideShowProps) => {
 
   return (
     <div className={s.slideShow}>
-      <img className={s.slideShow__img} src={imagesList[count.current - 1]} alt="Photos de l'appartement" />
+      {!isLoaded && <Loader color={"rgb(255, 96,96)"} />}
+      <img
+        ref={imageRef}
+        className={s.slideShow__img}
+        src={imagesList[count.current - 1]}
+        alt="Photos de l'appartement"
+        style={{ display: isLoaded ? "block" : "none" }}
+      />
       <PicturesControls />
     </div>
   );
