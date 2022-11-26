@@ -26,7 +26,7 @@ const Lodging = ({}: LodgingProps) => {
     { title: "Équipements", list: data?.equipments },
   ];
 
-  if (error) navigate("/error");
+  if (error) navigate("/error", { replace: true });
 
   return (
     <MainComponent>
