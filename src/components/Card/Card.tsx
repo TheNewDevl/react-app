@@ -1,15 +1,18 @@
 import s from "./Card.module.scss";
 import { ApartmentType } from "../../utils/types";
 import { Link } from "react-router-dom";
+import { CSSProperties } from "react";
 
 type CardProps = {
   title: ApartmentType["title"];
   cover: ApartmentType["cover"];
   id: string;
   onLoaded?: () => void;
+  style?: CSSProperties;
 };
 
 const Card = ({
+  style,
   onLoaded,
   id,
   title = "title",
@@ -18,7 +21,7 @@ const Card = ({
   const href = `/lodging/${id}`;
 
   return (
-    <article className={s.card}>
+    <article style={{ ...style }} className={s.card}>
       <img onLoad={onLoaded} src={cover} alt={`${title} illustration`} />
       <Link to={href}>
         <h2 className={s.card__title}>{title}</h2>

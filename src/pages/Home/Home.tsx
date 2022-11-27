@@ -19,7 +19,7 @@ const Home = ({}: HomeProps) => {
   useEffect(() => {
     document.title = "Accueil";
     //remove loader in any case after 1000ms
-    setInterval(() => setIsLoadingImages(false), 1000);
+    setInterval(() => setIsLoadingImages(false), 3000);
   }, []);
 
   const onLoaded = () => {
@@ -37,12 +37,18 @@ const Home = ({}: HomeProps) => {
     <MainComponent>
       <Banner imgSrc={homeBanner} text={text} />
       <section className={s.cards__container}>
-        {(isLoading || isLoadingImages) && <Loader fullScreen />}
+        {(isLoading || isLoadingImages) && <Loader color={"rgb(255, 96,96)"} />}
         {error && <p>{error}</p>}
-        {data &&
-          data.map((ap: ApartmentType) => (
-            <Card onLoaded={onLoaded} key={ap.id} title={ap.title} cover={ap.cover} id={ap.id} />
-          ))}
+        {data?.map((ap: ApartmentType) => (
+          <Card
+            style={{ display: isLoading || isLoadingImages ? "none" : "block" }}
+            key={ap.id}
+            onLoaded={onLoaded}
+            id={ap.id}
+            title={ap.title}
+            cover={ap.cover}
+          />
+        ))}
       </section>
     </MainComponent>
   );
