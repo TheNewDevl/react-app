@@ -52,7 +52,7 @@ const SlideShow = ({ imagesList }: SlideShowProps) => {
   };
 
   return (
-    <div className={s.slideShow}>
+    <div className={`${s.slideShow} invisible`}>
       {!isLoaded && <Loader color={"rgb(255, 96,96)"} />}
       <img
         ref={imageRef}

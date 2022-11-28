@@ -6,25 +6,27 @@ import { CSSProperties } from "react";
 type CardProps = {
   title: ApartmentType["title"];
   cover: ApartmentType["cover"];
-  id: string;
+  lodgingId: string;
   onLoaded?: () => void;
   style?: CSSProperties;
+  id: number;
 };
 
 const Card = ({
   style,
-  onLoaded,
   id,
+  onLoaded,
+  lodgingId,
   title = "title",
   cover = "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg",
 }: CardProps) => {
-  const href = `/lodging/${id}`;
+  const href = `/lodging/${lodgingId}`;
 
   return (
-    <article style={{ ...style }} className={s.card}>
+    <article style={{ ...style }} className={`${s.card} invisible invisible-${id}`}>
       <img onLoad={onLoaded} src={cover} alt={`${title} illustration`} />
       <Link to={href}>
-        <h2 className={s.card__title}>{title}</h2>
+        <h2 className={`${s.card__title} invisible-1`}>{title}</h2>
         <span aria-hidden="true" className={s.link__mask}></span>
       </Link>
     </article>

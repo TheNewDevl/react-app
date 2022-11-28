@@ -39,7 +39,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer ref={footerDomRef}>
+    <footer ref={footerDomRef} className={"invisible"}>
       <div className={s.logo}>
         <Logo isFixed />
       </div>

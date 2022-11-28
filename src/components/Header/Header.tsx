@@ -38,7 +38,7 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <header className={"invisible"}>
       <div>
         <Logo width={logoSize.width} height={logoSize.height} />
       </div>

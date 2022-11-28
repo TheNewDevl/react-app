@@ -36,15 +36,16 @@ const Home = ({}: HomeProps) => {
   return (
     <MainComponent>
       <Banner imgSrc={homeBanner} text={text} />
-      <section className={s.cards__container}>
+      <section className={`${s.cards__container}`}>
         {(isLoading || isLoadingImages) && <Loader color={"rgb(255, 96,96)"} />}
         {error && <p>{error}</p>}
-        {data?.map((ap: ApartmentType) => (
+        {data?.map((ap: ApartmentType, index) => (
           <Card
             style={{ display: isLoading || isLoadingImages ? "none" : "block" }}
             key={ap.id}
             onLoaded={onLoaded}
-            id={ap.id}
+            lodgingId={ap.id}
+            id={index}
             title={ap.title}
             cover={ap.cover}
           />

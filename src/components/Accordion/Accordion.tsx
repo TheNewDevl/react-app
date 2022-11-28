@@ -36,7 +36,7 @@ const Accordion = ({ content, opened, isApartmentPage, id }: CollapseProps) => {
   };
 
   return (
-    <div ref={accordionRef} className={s.accordion}>
+    <div ref={accordionRef} className={`${s.accordion} invisible invisible-${id}`}>
       <div
         role="button"
         tabIndex={0}

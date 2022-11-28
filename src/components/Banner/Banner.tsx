@@ -17,7 +17,7 @@ const Banner = ({ isFixedHeight, text, imgSrc }: HomeBannerProps) => {
   }, []);
 
   return (
-    <div ref={bannerRef} className={handleBannerClass(isFixedHeight, s)}>
+    <div ref={bannerRef} className={`${handleBannerClass(isFixedHeight, s)} invisible`}>
       {text && text}
     </div>
   );

@@ -33,14 +33,14 @@ const Lodging = ({}: LodgingProps) => {
       {data && (
         <>
           <SlideShow imagesList={data.pictures} />
-          <div className={s.top__wrapper}>
-            <div className={s.title__wrapper}>
+          <div className={`${s.top__wrapper} invisible`}>
+            <div className={`${s.title__wrapper} invisible-1`}>
               <h1 className={s.lodging__title}>{data.title}</h1>
               <p className={s.lodging__location}>{data.location}</p>
               <Tags tagsList={data.tags} />
             </div>
 
-            <div className={s.host__wrapper}>
+            <div className={`${s.host__wrapper}  invisible-3`}>
               <Ratings rating={+data.rating} totalAvailableStars={5} />
               <div className={s.lodging__host__container}>
                 <NameSpans name={data.host.name} />
