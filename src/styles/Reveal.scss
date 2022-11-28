@@ -1,0 +1,18 @@
+.invisible, .invisible [class*="visible-"] {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.visible, .visible [class*="visible-"] {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s cubic-bezier(.63, 0, 0, 1.01), transform 1s cubic-bezier(.63, 0, 0, 1.01);
+}
+
+@for $i from 1 to 100 {
+  .visible.invisible-#{$i},
+  .visible .invisible-#{$i} {
+    transition-delay: $i * 100ms !important;
+  }
+;
+}
