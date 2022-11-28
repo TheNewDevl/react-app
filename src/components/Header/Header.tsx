@@ -3,9 +3,13 @@ import s from "./Header.module.scss";
 import { Link } from "react-router-dom";
 import { useEffect, MouseEvent } from "react";
 
-const setAriaSelected = (el: HTMLAnchorElement): void => {
+export const removeAriaSelected = (): void => {
   const selected = document.querySelector("[aria-selected]");
-  if (selected) selected.removeAttribute("aria-selected");
+  selected && selected.removeAttribute("aria-selected");
+};
+
+const setAriaSelected = (el: HTMLAnchorElement): void => {
+  removeAriaSelected();
   el && el.setAttribute("aria-selected", "true");
 };
 

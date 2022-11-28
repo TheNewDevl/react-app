@@ -1,10 +1,12 @@
 import s from "./Error.module.scss";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { removeAriaSelected } from "../../components/Header/Header";
 
 const Error = () => {
   useEffect(() => {
     document.title = "Page introuvable";
+    removeAriaSelected();
   }, []);
 
   return (

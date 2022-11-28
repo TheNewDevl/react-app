@@ -9,6 +9,7 @@ import Tags from "../../components/Tags/Tags";
 import Accordion from "../../components/Accordion/Accordion";
 import NameSpans from "../../components/NameSpans/NameSpans";
 import Loader from "../../components/Loader/Loader";
+import { removeAriaSelected } from "../../components/Header/Header";
 
 const Lodging = () => {
   const URL = "/logements.json";
@@ -18,6 +19,7 @@ const Lodging = () => {
 
   useEffect(() => {
     document.title = data ? data.title : "Chargement...";
+    removeAriaSelected();
   }, [data]);
 
   const accordionData = [
