@@ -8,9 +8,7 @@ import { ApartmentType } from "../../utils/types";
 import MainComponent from "../../layout/MainComponent";
 import Loader from "../../components/Loader/Loader";
 
-type HomeProps = {};
-
-const Home = ({}: HomeProps) => {
+const Home = () => {
   const URL = "/logements.json";
   const { data, isLoading, error } = useFetch(URL, undefined);
   const [isLoadingImages, setIsLoadingImages] = useState<boolean>(true);

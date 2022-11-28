@@ -14,7 +14,7 @@ const Banner = ({ isFixedHeight, text, imgSrc }: HomeBannerProps) => {
   /** Set img background */
   useEffect(() => {
     bannerRef.current?.style.setProperty("background-image", `url(${imgSrc})`);
-  }, []);
+  }, [imgSrc]);
 
   return (
     <div ref={bannerRef} className={`${handleBannerClass(isFixedHeight, s)} invisible`}>

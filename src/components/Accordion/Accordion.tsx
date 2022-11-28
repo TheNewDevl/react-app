@@ -18,15 +18,11 @@ const Accordion = ({ content, opened, isApartmentPage, id }: CollapseProps) => {
   const { text, list, title } = content;
 
   useEffect(() => {
-    HandleTextContainerMaxHeight();
-  }, [open]);
-
-  const HandleTextContainerMaxHeight = () => {
     if (textContainerRef.current && textDomRef.current) {
       const textDomHeight = textDomRef.current.clientHeight;
       textContainerRef.current.style.maxHeight = open ? `${textDomHeight + 15}px` : "0px";
     }
-  };
+  }, [open]);
 
   const handleCollapse = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "Enter" || e.code === "Space") {

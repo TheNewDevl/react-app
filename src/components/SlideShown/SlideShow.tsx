@@ -1,6 +1,6 @@
 import s from "./SlideShow.module.scss";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Loader from "../Loader/Loader";
 
 type SlideShowProps = { imagesList: string[] };
@@ -11,13 +11,13 @@ const SlideShow = ({ imagesList }: SlideShowProps) => {
     current: 1,
     total: 0,
   });
-  const imageRef = useRef<HTMLImageElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setCount({ ...count, total: imagesList.length });
-    if (imageRef.current) imageRef.current.onload = () => setIsLoaded(true);
-  }, []);
+    setCount((prevState) => {
+      return { ...prevState, total: imagesList.length };
+    });
+  }, [imagesList]);
 
   const handleNext = () => {
     setCount({ ...count, current: count.current < count.total ? ++count.current : 1 });
@@ -55,7 +55,7 @@ const SlideShow = ({ imagesList }: SlideShowProps) => {
     <div className={`${s.slideShow} invisible`}>
       {!isLoaded && <Loader color={"rgb(255, 96,96)"} />}
       <img
-        ref={imageRef}
+        onLoad={() => setIsLoaded(true)}
         className={s.slideShow__img}
         src={imagesList[count.current - 1]}
         alt="Photos de l'appartement"

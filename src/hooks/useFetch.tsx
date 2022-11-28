@@ -32,7 +32,7 @@ export function useFetch(url: string, id: string | undefined) {
       }
     };
     fetchData();
-  }, [url]);
+  }, [url, id]);
 
   return { data, error, isLoading };
 }

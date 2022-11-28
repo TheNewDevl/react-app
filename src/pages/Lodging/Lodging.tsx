@@ -8,10 +8,9 @@ import SlideShow from "../../components/SlideShown/SlideShow";
 import Tags from "../../components/Tags/Tags";
 import Accordion from "../../components/Accordion/Accordion";
 import NameSpans from "../../components/NameSpans/NameSpans";
+import Loader from "../../components/Loader/Loader";
 
-type LodgingProps = {};
-
-const Lodging = ({}: LodgingProps) => {
+const Lodging = () => {
   const URL = "/logements.json";
   const { id } = useParams();
   const { data, isLoading, error } = useFetch(URL, id);
@@ -30,30 +29,34 @@ const Lodging = ({}: LodgingProps) => {
 
   return (
     <MainComponent>
-      {data && (
-        <>
-          <SlideShow imagesList={data.pictures} />
-          <div className={`${s.top__wrapper} invisible`}>
-            <div className={`${s.title__wrapper} invisible-1`}>
-              <h1 className={s.lodging__title}>{data.title}</h1>
-              <p className={s.lodging__location}>{data.location}</p>
-              <Tags tagsList={data.tags} />
-            </div>
+      {isLoading ? (
+        <Loader color={"rgb(255, 96,96)"} />
+      ) : (
+        data && (
+          <>
+            <SlideShow imagesList={data.pictures} />
+            <div className={`${s.top__wrapper} invisible`}>
+              <div className={`${s.title__wrapper} invisible-1`}>
+                <h1 className={s.lodging__title}>{data.title}</h1>
+                <p className={s.lodging__location}>{data.location}</p>
+                <Tags tagsList={data.tags} />
+              </div>
 
-            <div className={`${s.host__wrapper}  invisible-3`}>
-              <Ratings rating={+data.rating} totalAvailableStars={5} />
-              <div className={s.lodging__host__container}>
-                <NameSpans name={data.host.name} />
-                <img src={data.host.picture} alt="host picture" />
+              <div className={`${s.host__wrapper}  invisible-3`}>
+                <Ratings rating={+data.rating} totalAvailableStars={5} />
+                <div className={s.lodging__host__container}>
+                  <NameSpans name={data.host.name} />
+                  <img src={data.host.picture} alt="host avatar" />
+                </div>
               </div>
             </div>
-          </div>
-          <div className={`${s.accordion__container}`}>
-            {accordionData.map(({ title, text, list }, i) => (
-              <Accordion key={i} id={i} opened isApartmentPage content={{ title, text, list }} />
-            ))}
-          </div>
-        </>
+            <div className={`${s.accordion__container}`}>
+              {accordionData.map(({ title, text, list }, i) => (
+                <Accordion key={i} id={i} opened isApartmentPage content={{ title, text, list }} />
+              ))}
+            </div>
+          </>
+        )
       )}
     </MainComponent>
   );

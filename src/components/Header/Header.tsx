@@ -1,7 +1,7 @@
 import Logo from "../Logo/Logo";
 import s from "./Header.module.scss";
 import { Link } from "react-router-dom";
-import { useEffect, useState, MouseEvent } from "react";
+import { useEffect, MouseEvent } from "react";
 
 const setAriaSelected = (el: HTMLAnchorElement): void => {
   const selected = document.querySelector("[aria-selected]");
@@ -10,27 +10,17 @@ const setAriaSelected = (el: HTMLAnchorElement): void => {
 };
 
 const Header = () => {
-  const [logoSize, setLogoSize] = useState({ width: 145, height: 47 });
   const paths = { home: "/", about: "/about" };
   const navLinks = [
     { name: "Accueil", path: paths.home },
     { name: "A Propos", path: paths.about },
   ];
-  const matchMedia = window.matchMedia("(min-width: 768px)");
 
   useEffect(() => {
-    const handleResize = () => {
-      matchMedia.matches ? setLogoSize({ width: 211, height: 60 }) : setLogoSize({ width: 145, height: 47 });
-    };
-    handleResize();
-    matchMedia.addEventListener("change", handleResize);
-
     // Underline the current link depending on the url path
     const urlPath = window.location.pathname;
     const link = document.querySelector(`[href='${urlPath}']`);
     link && setAriaSelected(link as HTMLAnchorElement);
-
-    return () => matchMedia.removeEventListener("change", handleResize);
   }, []);
 
   const handleUnderline = (e: MouseEvent<HTMLAnchorElement>) => {
@@ -40,7 +30,7 @@ const Header = () => {
   return (
     <header className={"invisible"}>
       <div>
-        <Logo width={logoSize.width} height={logoSize.height} />
+        <Logo />
       </div>
       <nav role="tablist">
         {navLinks.map(({ name, path }) => (
