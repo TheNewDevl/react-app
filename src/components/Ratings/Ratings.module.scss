@@ -1,6 +1,23 @@
 @use "../../styles/utils/mixins";
+@use "../../styles/utils/variables";
 
 .ratings__container {
   display: flex;
   gap: mixins.clampCalculator(10px, 20px);
+
+  & .star {
+    width: mixins.clampCalculator(16px, 30px);
+    aspect-ratio: 1/1;
+
+    & path {
+      fill: variables.$grey-color;
+    }
+
+    &.colored {
+      & path {
+        fill: variables.$primary-color;
+      }
+    }
+  }
+
 }
