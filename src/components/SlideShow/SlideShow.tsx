@@ -9,7 +9,7 @@ const SlideShow = ({ imagesList }: SlideShowProps) => {
   //will contain the gallery count
   const [count, setCount] = useState({
     current: 1,
-    total: 0,
+    total: 1,
   });
   const [isLoaded, setIsLoaded] = useState(false);
 

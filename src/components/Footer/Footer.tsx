@@ -24,8 +24,7 @@ const Footer = () => {
       footerPosRefs.current.matchMedia = window.matchMedia(`(min-height: ${footerHeight! + blockSize!}px)`);
 
       if (footerPosRefs.current.matchMedia) {
-        footerPosRefs.current.matchMedia.removeEventListener("change", handleMatchesChange);
-        footerPosRefs.current.matchMedia.addEventListener("change", handleMatchesChange);
+        footerPosRefs.current.matchMedia.onchange = handleMatchesChange;
       }
     },
     [handleMatchesChange]
@@ -37,7 +36,7 @@ const Footer = () => {
     observer.observe(document.body);
     return () => {
       observer.unobserve(document.body);
-      footerPosRefs.current.matchMedia?.removeEventListener("change", handleMatchesChange);
+      if (footerPosRefs.current.matchMedia) footerPosRefs.current.matchMedia.onchange = null;
     };
   }, [handleObserver, handleMatchesChange]);
 

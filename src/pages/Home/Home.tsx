@@ -16,7 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     document.title = "Accueil";
-    //remove loader in any case after 1000ms
+    //remove loader in any case after 3000ms
     setInterval(() => setIsLoadingImages(false), 3000);
   }, []);
 

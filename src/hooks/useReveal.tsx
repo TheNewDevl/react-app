@@ -11,7 +11,7 @@ const useReveal = () => {
   const updateArticleClasses = (tagName: string) => {
     const articles = invisibleElementsRef.current.filter((el) => el.tagName === tagName);
     articles.forEach((a, i) => {
-      a.classList.replace(`${a.classList[a.classList.length - 1]}`, `invisible-${++i}`);
+      a.classList.replace(`${a.classList[a.classList.length - 1]}`, `invisible-${i}`);
     });
   };
 

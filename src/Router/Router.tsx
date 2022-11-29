@@ -7,9 +7,9 @@ import Lodging from "../pages/Lodging/Lodging";
 const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/lodging/:id" element={<Lodging />} />
+      <Route path="/" element={<Home />} />
       <Route path="*" element={<Error />} />
     </Routes>
   );

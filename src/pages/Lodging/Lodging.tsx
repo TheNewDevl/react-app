@@ -4,7 +4,7 @@ import MainComponent from "../../layout/MainComponent";
 import { useFetch } from "../../hooks/useFetch";
 import { useEffect } from "react";
 import Ratings from "../../components/Ratings/Ratings";
-import SlideShow from "../../components/SlideShown/SlideShow";
+import SlideShow from "../../components/SlideShow/SlideShow";
 import Tags from "../../components/Tags/Tags";
 import Accordion from "../../components/Accordion/Accordion";
 import NameSpans from "../../components/NameSpans/NameSpans";
