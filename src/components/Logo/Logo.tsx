@@ -1,17 +1,11 @@
-type LogoProps = {
-  width?: number;
-  height?: number;
-  isFixed?: boolean;
-};
+import s from "./Logo.module.scss";
 
-const Logo = ({ width = 122, height = 40, isFixed }: LogoProps) => {
-  const clampWidth = `clamp(9.063rem, 7.632rem + 6.103vw, 13.125rem)`;
-  const clampHeight = `clamp(2.938rem, 2.475rem + 1.972vw, 4.25rem)`;
+type LogoProps = { isFixed?: boolean };
 
+const Logo = ({ isFixed }: LogoProps) => {
   return (
     <svg
-      width={isFixed ? `${width}px` : clampWidth}
-      height={isFixed ? `${height}px` : clampHeight}
+      className={isFixed ? s.logo_fixed : s.logo}
       viewBox="0 0 211 68"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

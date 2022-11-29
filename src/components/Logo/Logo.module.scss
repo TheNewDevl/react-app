@@ -1,0 +1,11 @@
+@use '../../styles/utils/mixins';
+
+.logo {
+  width: mixins.clampCalculator(145px, 210px);
+  height: mixins.clampCalculator(47px, 68px);
+}
+
+.logo_fixed {
+  width: 122px;
+  height: 40px;
+}
