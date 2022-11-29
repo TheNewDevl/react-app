@@ -28,29 +28,6 @@ const SlideShow = ({ imagesList }: SlideShowProps) => {
     setIsLoaded(false);
   };
 
-  /** Will display controls only if there is more than one picture*/
-  const PicturesControls = () => {
-    if (count.total > 1) {
-      return (
-        <>
-          <div className={s.slideShow__count}>
-            <span>{count.current}</span>
-            <span>/</span>
-            <span>{count.total}</span>
-          </div>
-          <button onClick={handlePrevious} className={`${s.slideShow__btn} ${s.slideShow__btn_left}`}>
-            Image précédente
-          </button>
-          <button onClick={handleNext} className={`${s.slideShow__btn} ${s.slideShow__btn_right}`}>
-            Image suivante
-          </button>
-        </>
-      );
-    } else {
-      return null;
-    }
-  };
-
   return (
     <div className={`${s.slideShow} invisible`}>
       {!isLoaded && <Loader color={"rgb(255, 96,96)"} />}
@@ -61,7 +38,25 @@ const SlideShow = ({ imagesList }: SlideShowProps) => {
         alt="Photos de l'appartement"
         style={{ display: isLoaded ? "block" : "none" }}
       />
-      <PicturesControls />
+
+      {/** Will display controls only if there is more than one picture */}
+      {count.total > 1 && (
+        <>
+          <div style={count.total > 1 ? { opacity: 1 } : { opacity: 0 }}>
+            <div className={s.slideShow__count}>
+              <span>{count.current}</span>
+              <span>/</span>
+              <span>{count.total}</span>
+            </div>
+            <button onClick={handlePrevious} className={`${s.slideShow__btn} ${s.slideShow__btn_left}`}>
+              Image précédente
+            </button>
+            <button onClick={handleNext} className={`${s.slideShow__btn} ${s.slideShow__btn_right}`}>
+              Image suivante
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };
