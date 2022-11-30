@@ -3,8 +3,9 @@ import Home from "../pages/Home/Home";
 import About from "../pages/About/About";
 import Error from "../pages/error/Error";
 import Lodging from "../pages/Lodging/Lodging";
+import { RouteInterface } from "../utils/types";
 
-export const routes = [
+export const appRoutes: RouteInterface[] = [
   { path: "/about", component: About, navLinkName: "A propos" },
   { path: "/lodging/:id", component: Lodging },
   { path: "/", component: Home, navLinkName: "Accueil" },
@@ -14,7 +15,7 @@ export const routes = [
 const Router = () => {
   return (
     <Routes>
-      {routes.map((route) => (
+      {appRoutes.map((route) => (
         <Route key={route.path} path={route.path} element={<route.component />} />
       ))}
     </Routes>

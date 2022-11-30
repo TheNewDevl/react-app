@@ -6,6 +6,7 @@ header {
 
   & nav {
     display: flex;
+    flex-direction: row-reverse;
     gap: mixins.clampCalculator(10px, 57px);
 
     & .link {

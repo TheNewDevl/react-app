@@ -30,3 +30,9 @@ export interface GetHookFetchReturnValue<T> {
   isLoading: boolean;
   error: string | null;
 }
+
+export interface RouteInterface {
+  path: string;
+  component: () => JSX.Element;
+  navLinkName?: string;
+}
