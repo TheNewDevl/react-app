@@ -4,13 +4,19 @@ import About from "../pages/About/About";
 import Error from "../pages/error/Error";
 import Lodging from "../pages/Lodging/Lodging";
 
+export const routes = [
+  { path: "/about", component: About, navLinkName: "A propos" },
+  { path: "/lodging/:id", component: Lodging },
+  { path: "/", component: Home, navLinkName: "Accueil" },
+  { path: "*", component: Error },
+];
+
 const Router = () => {
   return (
     <Routes>
-      <Route path="/about" element={<About />} />
-      <Route path="/lodging/:id" element={<Lodging />} />
-      <Route path="/" element={<Home />} />
-      <Route path="*" element={<Error />} />
+      {routes.map((route) => (
+        <Route key={route.path} path={route.path} element={<route.component />} />
+      ))}
     </Routes>
   );
 };
